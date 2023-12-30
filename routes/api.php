@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\API\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1/')->group(function(){
+
+    //Without auth routes.  
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('verify/otp', [AuthController::class, 'verify']);
+    Route::post('register', [RegisterController::class, 'register']);
+
+    //With auth routes.
+    Route::group(['middleware' => 'token.validate'], function(){
+
+        Route::post('logout', [AuthController::class, 'logout']);
+        Route::get('profile', [ProfileController::class, 'get']);
+    });
 });
+
+

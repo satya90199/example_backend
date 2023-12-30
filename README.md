@@ -1,9 +1,10 @@
-# Laravel Basic Auth Skeleton
+# Laravel Auth JWT API Skeleton
 
 This skelton comes with basic user auth setup with some packages & those are.
 
 1. Image manipulation library | https://intervention.io/
 2. Yazra Datatable | https://yajrabox.com/docs/laravel-datatables/master
+3. JWT | https://jwt-auth.readthedocs.io/en/develop/quick-start/
 
 # Requirements
 
@@ -42,5 +43,10 @@ Run the server for Host php artisan command  \
 `php artisan serve` 
 
 
-it will be host on a ip which will visble on your terminal.
+It will be host on a ip which will visble on your terminal. \
+For Test the API Go To - `https://www.postman.com/programmics/workspace/skeleton-test/overview`
+
+
+##### NOTE: If composer install throw error then use `composer install --ignore-platform-reqs`
+
 
